@@ -308,7 +308,7 @@
     enable_aodh: "yes"
     #enable_barbican: "no"
     #enable_blazar: "no"
-    enable_ceilometer: "yes"
+    #enable_ceilometer: "yes"
     #enable_ceilometer_ipmi: "no"
     #enable_cells: "no"
     #enable_central_logging: "no"
