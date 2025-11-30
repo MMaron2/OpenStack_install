@@ -392,7 +392,9 @@ display_summary() {
     log_info "==================================="
     echo ""
 
-    ADMIN_PASSWORD=$(grep keystone_admin_password /etc/kolla/passwords.yml | awk '{print $2}')
+    sudo chmod 644 /etc/kolla/admin-openrc.sh
+    source /etc/kolla/admin-openrc.sh
+    ADMIN_PASSWORD=$(grep -i 'password' ~/.config/openstack/clouds.yaml -n)
 
     echo "URL Horizon: http://$VIP_ADDRESS/"
     echo "Login: admin"
@@ -437,9 +439,9 @@ main() {
     install_ansible_deps
     bootstrap_servers
     run_prechecks
-    #deploy_openstack
-    #post_deploy
-    #display_summary
+    deploy_openstack
+    post_deploy
+    display_summary
 }
 
 # Uruchom główną funkcję z argumentami
